@@ -9,8 +9,8 @@ module.exports.getAccessToken = async (event) => {
     + '&client_secret=8n60nvcg9f9epskkmi5nq413e9'
     + '&grant_type=authorization_code'
     + '&redirect_uri=https://lakkot.github.io/meetup/'
-    + '&code=' + event.pathParameters.code;
-    //+ '&code=d7c8ffd4af91550bf54167d3964386dd';
+    //+ '&code=' + event.pathParameters.code;
+    + '&code=02228cb9771cf6f7937eb48c1b95610c';
 
   const info = await axios.post(MEETUP_OAUTH_URL);
 
