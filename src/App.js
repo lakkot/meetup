@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          It's my Mockup-Meetup app!
+          Hey. It's my Mockup-Meetup app!
         </p>
         <a
           className="App-link"
