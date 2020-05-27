@@ -4,7 +4,8 @@ import './App.css';
 
 function App() {
 
-  console.log(req.params.code)
+  
+  
   
   return (
     <div className="App">
