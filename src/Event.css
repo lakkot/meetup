@@ -1,0 +1,13 @@
+.event {
+  text-align: left;
+  padding: 10px;
+}
+
+.event-pane {
+  text-align: right;
+
+}
+
+.hidden {
+  display: none;
+}
