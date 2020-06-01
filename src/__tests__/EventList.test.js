@@ -15,9 +15,10 @@ describe('generate list of events', () => {
 
   });
   
-  test('render correct number of events', () => { 
-    EventListWrapper.setState({ events: [{id:1}, {id:2}, {id:3}, {id:4} ] });
-    expect(EventListWrapper.find(Event)).toHaveLength(4);
-  });
 
+  test('render correct number of events', () => { 
+    EventListWrapper.setState({ events: [{id:1}] });
+    expect(EventListWrapper.find(Event)).toHaveLength(1);
+  });
+  
 });

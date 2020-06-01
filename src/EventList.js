@@ -96,9 +96,12 @@ class EventList extends Component {
 
 
   render() {
+    //const { events } = this.props;
+    const { events } = this.state;
+
     return (
       <ul className="EventList">
-        {this.state.events.map(event =>
+        {events.map(event =>
           <li key={event.id}> 
             <Event event={event} />
           </li>

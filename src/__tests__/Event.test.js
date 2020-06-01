@@ -9,6 +9,8 @@ import Event from '../Event'
 describe('see information about given event', () => {
   
   let EventWrapper;
+  //EventWrapper.setProps()
+
   beforeAll(() => {
     EventWrapper = shallow(<Event />);
 
