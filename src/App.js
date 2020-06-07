@@ -382,12 +382,16 @@ class App extends Component {
   */
   
 
+  updateEvents = () => {
+
+  }
+
   render() {
     let eventCount = this.state.events.length;
     let eventlist = this.state.events;
     return (
       <div className="App">
-        <CitySearch />
+        <CitySearch updateEvents={this.updateEvents}/>
         <EventList events={eventlist}/>
         <NumberOfEvents eventCount={eventCount}/>
       </div>
