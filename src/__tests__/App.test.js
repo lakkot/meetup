@@ -7,6 +7,7 @@ import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
 
+import { mockEvents } from '../mock-events';
 
 
 
@@ -54,5 +55,11 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(mockEvents.events);
   });
 
+  test('render correct list of events', () => {
+    const AppWrapper = mount(<App />);
+    AppWrapper.setState({ events: [{ id: 1, group: {name:''} }, { id: 2, group: {name:''}  }, { id: 3, group: {name:''}  }, { id: 4, group: {name:''}  }] });
+    expect(AppWrapper.find('.Event')).toHaveLength(4);
+    AppWrapper.unmount();
+  });
 
 });

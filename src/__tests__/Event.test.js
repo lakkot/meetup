@@ -9,11 +9,23 @@ import Event from '../Event'
 describe('see information about given event', () => {
   
   let EventWrapper;
-  //EventWrapper.setProps()
 
   beforeAll(() => {
-    EventWrapper = shallow(<Event />);
-
+    EventWrapper = shallow(<Event event={ 
+      {
+      id: 'wwtgqrybckbsb',
+      name: 'Vue.js // Berlin',
+      date_in_series_pattern: false,
+      status: 'upcoming',
+      time: 1594746000000,
+      local_date: '2020-07-14',
+      local_time: '19:00',
+      yes_rsvp_count: 7,
+      group: { name: 'Sample Group' },
+      link: 'https://www.meetup.com/Vue-js-Berlin/events/wwtgqrybckbsb/',
+      description: '<p>Lets talk about Vue.js the Vue.js ecosystem!</p>'
+      } 
+    }/>);
   });
 
 
@@ -37,3 +49,5 @@ describe('see information about given event', () => {
   
 
 });
+
+
