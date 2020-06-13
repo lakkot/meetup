@@ -1,6 +1,5 @@
-import { mockEvents } from './mock-events';
 import axios from 'axios';
-
+import { mockEvents } from './mock-events';
 
 async function getSuggestions(query) {
   if (window.location.href.startsWith('http://localhost')) {
@@ -38,9 +37,35 @@ async function getSuggestions(query) {
   return [];
 }
 
+async function getEvents(lat, lon, page) {
+  if (window.location.href.startsWith('http://localhost')) {
+    return mockEvents.events;
+  }
+
+  const token = await getAccessToken();
+
+  if (token) {
+    let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
+      + '&access_token=' + token;
+    // lat, lon is optional; if you have a lat and lon, you can add them
+    if (lat && lon) {
+      url += '&lat=' + lat + '&lon=' + lon;
+    }
+    if (page) {
+      url += '&page=' + page;
+    }
+    if (lat && lon && page) {
+      url += '&lat=' + lat + '&lon=' + lon + '&page=' + page;
+    }
+    const result = await axios.get(url);
+    const events = result.data.events;
+    return events;
+  }
+
+};
+
 function getAccessToken() {
   const accessToken = localStorage.getItem('access_token');
-
   if (!accessToken) {
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get('code');
@@ -49,7 +74,6 @@ function getAccessToken() {
       window.location.href = 'https://secure.meetup.com/oauth2/authorize?client_id=bt14a1nk1ggt2ckt29fd56kfut&response_type=code&redirect_uri=https://lakkot.github.io/meetup/';
       return null;
     }
-
     return getOrRenewAccessToken('get', code);
   }
 
@@ -86,16 +110,9 @@ async function getOrRenewAccessToken(type, key) {
 
   // Return the access_token
   return tokenInfo.data.access_token;
-}
+};
 
-
-
-
-async function getEvents(lat, lon) {
-  return mockEvents.events;
-}
-
-export { getSuggestions, getEvents };
+export { getSuggestions, getEvents, getAccessToken };
 
 
 

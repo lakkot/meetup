@@ -68,7 +68,6 @@ class Event extends Component {
 
   render() {
     const { event } = this.props;
-    //const { event } = this.state;
     const { showdetails, hidedetails } = this.state;
     return (
       <div className='event'>
@@ -88,8 +87,3 @@ class Event extends Component {
 }
 
 export default Event;
-
-
-/*
-        <p className='event-group_name'>{event.group.name}</p>
-*/
