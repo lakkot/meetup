@@ -66,6 +66,29 @@ class Event extends Component {
 
   }
 
+  renderDetails= () => {
+    const {event} = this.props;
+    if (this.state.showdetails === '') {
+      return <div className={this.state.showdetails}>
+              <div className='extra'>
+          <p className='event-details' dangerouslySetInnerHTML={{ __html: event.description }}></p>
+          <a className='event-link' href={event.link}>Event Link</a>
+        </div>
+        <div className='event-pane'>
+          <button className='event_details_hide' onClick={() => this.hideDetails()} >Hide details</button>
+        </div>
+      </div>
+
+    } else {
+      return <div className={this.state.hidedetails}>
+
+<div className='event-pane'>
+          <button className='event_details_show' onClick={() => this.showDetails()}>Details</button>
+</div>
+</div>
+    }
+  }
+
   render() {
     const { event } = this.props;
     const { showdetails, hidedetails } = this.state;
@@ -75,12 +98,7 @@ class Event extends Component {
         <h5 className='event-name'>{event.name}</h5>
         <p className='event-group_name'>{event.group.name}</p>
         <p className='event-people_number'>{event.yes_rsvp_count} people are going</p>
-        <p className={`${showdetails} event-details extra`} dangerouslySetInnerHTML={{ __html: event.description }}></p>
-        <a className={`${showdetails} event-link extra`} href={event.link}>Event Link</a>
-        <div className='event-pane'>
-          <button className={`${hidedetails} event_details_show`} onClick={() => this.showDetails()}>Details</button>
-          <button className={`${showdetails} event_details_hide`} onClick={() => this.hideDetails()} >Hide details</button>
-        </div>
+        {this.renderDetails()}
       </div>
     );
   }

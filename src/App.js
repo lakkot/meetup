@@ -29,7 +29,6 @@ updateCity = (lat, lon) => {
 updateCount = (lat, lon, page) => {
   this.setState({page: page})
   getEvents(lat, lon, page).then(response => this.setState({ events: response }));
-  console.log(lat, lon, page)
 }
 
 updateEventCount = (e) => {
@@ -37,8 +36,6 @@ updateEventCount = (e) => {
 }
 
   render() {
-    console.log(this.state.lat);
-    console.log(this.state.lon);
     return (
       <div className="App">
         <div className='header'>
@@ -49,7 +46,6 @@ updateEventCount = (e) => {
           <div className='events-number'>
             <p>show</p>
             <NumberOfEvents 
-              className='numbr'
               eventCount={this.state.page} 
               //updateEventCount={this.updateEventCount} 
               updateCount={this.updateCount}

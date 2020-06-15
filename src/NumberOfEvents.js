@@ -22,9 +22,7 @@ class NumberOfEvents extends Component {
       this.setState({alert: 'hidden'})
 
     } else {
-      //this.setState({count: 32})
       this.setState({alert: 'alert'})
-      //alert('number of events must be more than 0')
     }
 
   }
@@ -32,7 +30,6 @@ class NumberOfEvents extends Component {
 
 
 render() {
-  console.log(this.state.count)
   const { alert } = this.state;
 
   return(
