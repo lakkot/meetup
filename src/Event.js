@@ -70,13 +70,13 @@ class Event extends Component {
     const { event } = this.props;
     const { showdetails, hidedetails } = this.state;
     return (
-      <div className='event'>
+      <div className='event-page'>
         <p className='event-date'>{event.local_time} - {event.local_date}</p>
         <h5 className='event-name'>{event.name}</h5>
         <p className='event-group_name'>{event.group.name}</p>
         <p className='event-people_number'>{event.yes_rsvp_count} people are going</p>
-        <p className={`${showdetails} event-details`} dangerouslySetInnerHTML={{ __html: event.description }}></p>
-        <a className={`${showdetails} event-link`} href={event.link}>Event Link</a>
+        <p className={`${showdetails} event-details extra`} dangerouslySetInnerHTML={{ __html: event.description }}></p>
+        <a className={`${showdetails} event-link extra`} href={event.link}>Event Link</a>
         <div className='event-pane'>
           <button className={`${hidedetails} event_details_show`} onClick={() => this.showDetails()}>Details</button>
           <button className={`${showdetails} event_details_hide`} onClick={() => this.hideDetails()} >Hide details</button>

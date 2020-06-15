@@ -34,7 +34,7 @@ describe('see information about given event', () => {
   });
   
   test('event container exists', () => {
-    expect(EventWrapper.find('.event')).toHaveLength(1);
+    expect(EventWrapper.find('.event-page')).toHaveLength(1);
   });
 
   test('details are hidden by default', () => {
