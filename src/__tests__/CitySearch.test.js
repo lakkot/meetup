@@ -5,7 +5,7 @@ import CitySearch from '../CitySearch';
 describe('<CitySearch /> component', () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}}/>);
+    CitySearchWrapper = shallow(<CitySearch updateCity={() => {}}/>);
   });
 
   test('render text input', () => {
@@ -70,7 +70,7 @@ describe('<CitySearch /> component', () => {
 describe('<CitySearch /> integration', () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}}/>);
+    CitySearchWrapper = shallow(<CitySearch updateCity={() => {}}/>);
   });
 
   test('get a list of cities when user searches for Munich', async () => {

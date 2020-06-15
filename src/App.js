@@ -32,29 +32,9 @@ updateCount = (lat, lon, page) => {
   console.log(lat, lon, page)
 }
 
-
-/*
-updateEvents = (lat, lon, page) => {
-  if (lat && lon) {
-    getEvents(lat, lon, this.state.page).then(response =>
-      this.setState({ events: response, lat, lon })
-    );
-  } else if (page) {
-    getEvents(this.state.lat, this.state.lon, page).then(response =>
-      this.setState({ events: response, page })
-    );
-  } else {
-    getEvents(this.state.lat, this.state.lon, this.state.page).then(
-      response => this.setState({ events: response })
-    );
-  }
-};
-*/
-  updateEventCount = (e) => {
-    this.setState({page: e.target.value});
-    //this.updateEvents(this.state.lat, this.state.lon, this.state.numberOfEvents);
-
-  }
+updateEventCount = (e) => {
+  this.setState({page: e.target.value});
+}
 
   render() {
     console.log(this.state.lat);
@@ -65,7 +45,7 @@ updateEvents = (lat, lon, page) => {
           <h3>Meetup-mockup-app</h3>
         </div>
         <div className='content'>
-          <CitySearch updateEvents={this.updateCity}/>
+          <CitySearch updateCity={this.updateCity}/>
           <div className='events-number'>
             <p>show</p>
             <NumberOfEvents 

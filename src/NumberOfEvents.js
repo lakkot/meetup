@@ -23,7 +23,7 @@ class NumberOfEvents extends Component {
 
     } else {
       //this.setState({count: 32})
-      this.setState({alert: ''})
+      this.setState({alert: 'alert'})
       //alert('number of events must be more than 0')
     }
 
