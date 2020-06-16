@@ -39,7 +39,7 @@ updateEventCount = (e) => {
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app</h3>
+          <h3>Meetup-mockup-app w. atatus</h3>
         </div>
         <div className='content'>
           <CitySearch updateCity={this.updateCity}/>
