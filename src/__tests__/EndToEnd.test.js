@@ -5,8 +5,8 @@ describe('show/hide an event details', () => {
   let page;
   beforeAll(async () => {
     const browser = await puppeteer.launch({
-      headless: false,
-      slowMo: 250 // slow down by 250ms
+      //headless: false,
+      //slowMo: 250 // slow down by 250ms
     });
     page = await browser.newPage();
     await page.goto('http://localhost:3000/meetup');
@@ -45,8 +45,8 @@ describe('Filter events by city', () => {
   let page;
   beforeAll(async () => {
       browser = await puppeteer.launch({
-          headless: false,
-          slowMo: 150
+          //headless: false,
+          //slowMo: 150
       });
 
       page = await browser.newPage()
