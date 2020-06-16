@@ -23,7 +23,7 @@ class App extends Component {
 
 
 updateCity = (lat, lon) => {
-  getEvents().then(response => this.setState({ events: response, lat, lon }));
+  getEvents(lat, lon).then(response => this.setState({ events: response, lat: lat, lon: lon }));
 }
 
 updateCount = (lat, lon, page) => {
