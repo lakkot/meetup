@@ -131,6 +131,17 @@ input[type="text"], input[type="number"] {
   border-bottom: 1px dotted black;
 }
 
-.alert {
-  padding-bottom: 5px;
+.Alert {
+  height: 30px;
+}
+
+.numberOfEvents {
+  width: 320px;
+
+}
+
+.numberOfEvents_line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

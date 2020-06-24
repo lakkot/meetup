@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 
+import {ErrorAlert} from './Alert';
+
+
 class NumberOfEvents extends Component {
 
   state = {
     count: 32,
-    alert: 'hidden'
+    alert: 'hidden',
+    errorText: ''
   }
 
 
@@ -20,9 +24,12 @@ class NumberOfEvents extends Component {
       this.setState({count: value})
       this.props.updateCount(this.props.lat, this.props.lon, value);
       this.setState({alert: 'hidden'})
+      this.setState({errorText: ''})
+
 
     } else {
       this.setState({alert: 'alert'})
+      this.setState({errorText: 'number of events must be more than 0'})
     }
 
   }
@@ -33,14 +40,19 @@ render() {
   const { alert } = this.state;
 
   return(
-    <div>
-      <p className={alert} >number of events must be more than 0</p>
-      <input
-        className='number'
-        value={this.state.count}
-        onChange={e => this.newCount(e)}
-      >
-      </input>
+    <div className="numberOfEvents">
+      <ErrorAlert className={alert} text={this.state.errorText} />
+      <div className="numberOfEvents_line">
+        <p>show</p>
+        <input
+          className='number'
+          value={this.state.count}
+          onChange={e => this.newCount(e)}
+        >
+        </input>
+        <p>events</p>
+      </div>
+
     </div>
   )
 }

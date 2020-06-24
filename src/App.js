@@ -39,12 +39,12 @@ updateEventCount = (e) => {
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app w. atatus</h3>
+          <h3>Meetup-mockup-app w. atatus 1.5</h3>
         </div>
         <div className='content'>
           <CitySearch updateCity={this.updateCity}/>
           <div className='events-number'>
-            <p>show</p>
+            
             <NumberOfEvents 
               eventCount={this.state.page} 
               //updateEventCount={this.updateEventCount} 
@@ -52,7 +52,6 @@ updateEventCount = (e) => {
               lat={this.state.lat}
               lon={this.state.lon}
             />
-            <p>events</p>
           </div>
           
           <EventList events={this.state.events}/>
