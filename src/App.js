@@ -20,7 +20,20 @@ class App extends Component {
     isOffline: ''
   }
 
+/*
+componentWillMount() {
+  const searchparams = window.location.search;
+  const urlParams = new URLSearchParams(searchparams);
+  const code = urlParams.get('code')
+  if (!code) {
+    window.open('https://secure.meetup.com/oauth2/authorize?client_id=bt14a1nk1ggt2ckt29fd56kfut&response_type=code&redirect_uri=https://lakkot.github.io/meetup/', '_self')
+  }  
+}
+*/
+
  componentDidMount() {
+
+
   getEvents().then(response => this.setState({ events: response }));
   if (!navigator.onLine) {
     this.setState({isOffline: 'you are now in offline mode, using cached data'})
