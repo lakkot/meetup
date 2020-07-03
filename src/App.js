@@ -7,17 +7,28 @@ import NumberOfEvents from './NumberOfEvents';
 import { mockEvents } from './mock-events';
 import { getSuggestions, getEvents } from './api';
 
+import {OfflineAlert} from './Alert';
+
+
 class App extends Component {
 
   state = {
     events: [],
     page: 32,
     lat: '',
-    lon: ''
+    lon: '',
+    isOffline: ''
   }
 
  componentDidMount() {
   getEvents().then(response => this.setState({ events: response }));
+  if (!navigator.onLine) {
+    this.setState({isOffline: 'you are now in offline mode, using cached data'})
+    console.log('elo')
+  } else {
+    this.setState({isOffline: ''})
+    console.log('obadi')
+  }
 }
 
 
@@ -36,12 +47,17 @@ updateEventCount = (e) => {
 }
 
   render() {
+
+
+
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app w. atatus 1.7</h3>
+          <h3>Meetup-mockup-app w. atatus 1.8</h3>
         </div>
         <div className='content'>
+        <OfflineAlert text={this.state.isOffline} />
+
           <CitySearch updateCity={this.updateCity}/>
           <div className='events-number'>
             
