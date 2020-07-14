@@ -66,7 +66,7 @@ updateEventCount = (e) => {
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app w. atatus 1.8</h3>
+          <h3>Meetup-mockup-app w. atatus 1.9</h3>
         </div>
         <div className='content'>
         <OfflineAlert text={this.state.isOffline} />
