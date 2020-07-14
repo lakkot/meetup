@@ -25,7 +25,7 @@ module.exports.getAccessToken = async (event) => {
     }),
   };
 };
-
+/*hej*/
 module.exports.refreshAccessToken = async (event) => {
 
   const MEETUP_OAUTH_URL = 'https://secure.meetup.com/oauth2/access'
