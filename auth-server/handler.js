@@ -17,7 +17,8 @@ module.exports.getAccessToken = async (event) => {
   return {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify({
       access_token: info.data.access_token,
@@ -25,7 +26,7 @@ module.exports.getAccessToken = async (event) => {
     }),
   };
 };
-/*hej*/
+
 module.exports.refreshAccessToken = async (event) => {
 
   const MEETUP_OAUTH_URL = 'https://secure.meetup.com/oauth2/access'
@@ -39,7 +40,8 @@ module.exports.refreshAccessToken = async (event) => {
   return {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*"
     },
     body: JSON.stringify({
       access_token: info.data.access_token,
