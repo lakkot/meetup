@@ -106,10 +106,19 @@ input[type="text"], input[type="number"] {
   top: 0;
   left:0;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header button {
+  height: 40px;
+  margin-left: 10px;
 }
 
 .header h3 {
-  padding-top: 15px;
+  //padding-top: 15px;
 }
 
 .content {

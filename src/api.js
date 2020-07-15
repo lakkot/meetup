@@ -121,7 +121,16 @@ async function getOrRenewAccessToken(type, key) {
   return tokenInfo.data.access_token;
 };
 
-export { getSuggestions, getEvents, getAccessToken };
+
+function clearToken() {
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
+  localStorage.removeItem('last_saved_time');
+  console.log('xi')
+
+}
+
+export { getSuggestions, getEvents, getAccessToken, clearToken };
 
 
 

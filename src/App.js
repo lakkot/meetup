@@ -5,7 +5,7 @@ import EventList from './EventList'
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { mockEvents } from './mock-events';
-import { getSuggestions, getEvents } from './api';
+import { getSuggestions, getEvents, clearToken } from './api';
 
 import {OfflineAlert} from './Alert';
 
@@ -59,6 +59,10 @@ updateEventCount = (e) => {
   this.setState({page: e.target.value});
 }
 
+delCache = () => {
+  clearToken()
+}
+
   render() {
 
 
@@ -67,6 +71,7 @@ updateEventCount = (e) => {
       <div className="App">
         <div className='header'>
           <h3>Meetup-mockup-app w. atatus 1.9</h3>
+          <button onClick={this.delCache}>remove token</button>
         </div>
         <div className='content'>
         <OfflineAlert text={this.state.isOffline} />
