@@ -70,7 +70,7 @@ delCache = () => {
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app w. atatus 1.9</h3>
+          <h3>Meetup-mockup-app w. atatus 1.9.2</h3>
           <button onClick={this.delCache}>remove token</button>
         </div>
         <div className='content'>

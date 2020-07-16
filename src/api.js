@@ -126,7 +126,7 @@ function clearToken() {
   localStorage.removeItem('access_token');
   localStorage.removeItem('refresh_token');
   localStorage.removeItem('last_saved_time');
-  console.log('xi')
+  console.log('tokens removed')
 
 }
 
