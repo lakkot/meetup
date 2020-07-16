@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './Event.css'
 
+import {PieChart, Pie, Legend, Tooltip, ResponsiveContainer, Cell} from 'recharts';
+
+
+const data01 = [{name: 'Reservations', value: 400}, {name: 'Free slots', value: 300}]
+const colors = ['#ffc1b1', '#F2EBD7'];
+
 class Event extends Component {
   state = {
     showdetails: 'hidden',
@@ -18,7 +24,8 @@ class Event extends Component {
       "updated": 1583403063000,
       "utc_offset": 7200000,
       "waitlist_count": 0,
-      "yes_rsvp_count": 7,
+      "rsvp_limit": 100,
+      "yes_rsvp_count": 40,
       "venue": {
       "id": 26115111,
       "name": "Honeypot GmbH",
@@ -62,8 +69,19 @@ class Event extends Component {
   hideDetails= () => {
     this.setState({showdetails: 'hidden'})
     this.setState({hidedetails: ''})
+  }
 
+  chartData = () => {
+    const {event} = this.props;
+    const limit = event.rsvp_limit - event.yes_rsvp_count;
+    const count = event.yes_rsvp_count;
 
+    var data = [
+      {name: 'free spots', value: limit},
+      {name: 'going', value: count},
+    ]
+
+    return data;
   }
 
   renderDetails= () => {
@@ -89,7 +107,37 @@ class Event extends Component {
     }
   }
 
+
+renderPieChart = () => {
+  const {event} = this.props;
+
+  if (event.rsvp_limit && event.yes_rsvp_count) {
+    return         <ResponsiveContainer height={150}>
+    <PieChart >
+    <Pie 
+      //isAnimationActive={false} 
+      data={this.chartData()} 
+      dataKey="value" 
+      outerRadius={60} 
+      cx={80} 
+      labelLine={false}
+    >
+      {
+      data01.map((entry, index) => (
+        <Cell key={`cell-${index}`} fill={colors[index]}/>
+      ))
+    }
+    </ Pie>
+    <Legend align='left' verticalAlign='middle' layout="vertical" height={36} width={200}/>
+    <Tooltip/>
+  </PieChart>
+  </ResponsiveContainer>
+  }
+}
+
   render() {
+const data01 = [{name: 'Reservations', value: 400}, {name: 'Free slots', value: 300}]
+
     const { event } = this.props;
     const { showdetails, hidedetails } = this.state;
     return (
@@ -98,6 +146,9 @@ class Event extends Component {
         <h5 className='event-name'>{event.name}</h5>
         <p className='event-group_name'>{event.group.name}</p>
         <p className='event-people_number'>{event.yes_rsvp_count} people are going</p>
+
+        {this.renderPieChart()}
+
         {this.renderDetails()}
       </div>
     );

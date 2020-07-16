@@ -11,3 +11,8 @@
 .hidden {
   display: none;
 }
+
+.Legend {
+  outline: none;
+  border: none;
+}

@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 import './App.css';
 
 import EventList from './EventList'
@@ -37,10 +41,8 @@ componentWillMount() {
   getEvents().then(response => this.setState({ events: response }));
   if (!navigator.onLine) {
     this.setState({isOffline: 'you are now in offline mode, using cached data'})
-    console.log('elo')
   } else {
     this.setState({isOffline: ''})
-    console.log('obadi')
   }
 }
 
@@ -63,6 +65,34 @@ delCache = () => {
   clearToken()
 }
 
+//chart functions
+countEventsOnADate = (date) => {
+  let count = 0;
+  for (let i = 0; i < this.state.events.length; i += 1) {
+    if (this.state.events[i].local_date === date) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+getData = () => {
+  const next7Days = []; // Create empty array for the next 7 days
+  const currentDate = moment(); // Today2020-06-25
+  //const currentDate = moment('2020-06-25'); // Today2020-06-25
+  // Loop 7 times for next 7 days
+  for (let i = 0; i < 7; i += 1) {
+    currentDate.add(1, 'days'); // Add 1 day to current date, currentDate changes
+    const dateString = currentDate.format('YYYY-MM-DD'); // Format the date
+    // Use the countEventsOnADate function to count #events on this date
+    const count = this.countEventsOnADate(dateString);
+    next7Days.push({ date: dateString, number: count }); // Add this date and number to the list
+  }
+  return next7Days;
+}
+
+
+
   render() {
 
 
@@ -70,7 +100,7 @@ delCache = () => {
     return (
       <div className="App">
         <div className='header'>
-          <h3>Meetup-mockup-app w. atatus 1.9.2</h3>
+          <h3>Meetup-mockup-app w. atatus 2.0</h3>
           <button onClick={this.delCache}>remove token</button>
         </div>
         <div className='content'>
@@ -87,7 +117,20 @@ delCache = () => {
               lon={this.state.lon}
             />
           </div>
-          
+          <ResponsiveContainer height={400}>
+            <ScatterChart
+              margin={{
+                top: 20, right: 20, bottom: 20, left: 20,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="date" name="date" />
+              <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
+          </ResponsiveContainer>
+
           <EventList events={this.state.events}/>
         </div>
 
