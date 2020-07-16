@@ -136,7 +136,6 @@ renderPieChart = () => {
 }
 
   render() {
-const data01 = [{name: 'Reservations', value: 400}, {name: 'Free slots', value: 300}]
 
     const { event } = this.props;
     const { showdetails, hidedetails } = this.state;

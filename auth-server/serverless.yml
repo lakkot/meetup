@@ -72,7 +72,8 @@ functions:
     handler: handler.refreshAccessToken
     events:
       - http:
-          path: api/r-token/{refresh_token}
+#         path: api/r-token/{refresh_token}
+          path: api/token/{code}
           method: get
           cors: true
 
